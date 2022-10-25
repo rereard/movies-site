@@ -17,7 +17,7 @@ const Movie = ({movies, totalPages, setPage, page, loading}) => {
                                     <div className="text-sm md:text-base font-bold line-clamp-2 pb-2">{movie?.title}</div>
                                     <div className='flex items-center text-xs md:text-sm pb-2 mb-2 border-b'><AiFillStar/>   {movie.vote_average}</div>
                                     <div className="text-xs md:text-sm mb-2">{movie.release_date}</div>
-                                    <p className="text-xs md:text-sm line-clamp-2 sm:line-clamp-3 md:line-clamp-4">{movie?.overview}</p>
+                                    <p className="text-xs md:text-sm line-clamp-2 sm:line-clamp-3 lg:line-clamp-6">{movie?.overview}</p>
                                 </div>
                                 <div className='w-full md:block absolute top-0 p-2 rounded-b-lg'>
                                     <div className="text-sm md:text-base font-bold line-clamp-2 pb-2">{movie?.title}</div>

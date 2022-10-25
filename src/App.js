@@ -15,7 +15,7 @@ function App() {
 
   const fetchMovies = async () => {
     let response = []
-    search === '' ? response = await axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=b4ac0657bf5fbcdfbf343742414a3dfa&page=${page}`) : response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=b4ac0657bf5fbcdfbf343742414a3dfa&query=${search}&page=${page}`)
+    search === '' ? response = await axios.get(`https://api.themoviedb.org/3/trending/movie/week?api_key=b4ac0657bf5fbcdfbf343742414a3dfa&page=${page}`) : response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=b4ac0657bf5fbcdfbf343742414a3dfa&query=${search}&page=${page}`)
     movies.length === 0 ? setMovies(response.data.results) : setMovies([...movies, ...response.data.results])
     setTotalPages(response.data.total_pages)
     setLoading(true)
@@ -24,7 +24,6 @@ function App() {
   useEffect(() => {
     fetchMovies()
     setLoading(false)
-    console.log(loading);
   }, [search, page]);
 
   return (
@@ -32,7 +31,7 @@ function App() {
       <Header title='FinProH8'/>
       <div className='flex flex-col text-white items-center mb-10'>
         <Search 
-          title={search === '' ? 'Trending this day' : `Search: ${search}`} 
+          title={search === '' ? 'Trending this week' : `Search: ${search}`} 
           search={search} 
           setSearch={setSearch} 
           setMovies={setMovies} 
