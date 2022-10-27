@@ -1,5 +1,10 @@
 import  {AiFillStar} from 'react-icons/ai'
+import { useState } from 'react'
+
 const Movie = ({movies, totalPages, setPage, page, loading}) => {
+
+    const [load, setLoad] = useState(false)
+
     return(
         <div className="flex w-11/12 mt-4 justify-center">
             {totalPages === 0 ? (
@@ -10,9 +15,10 @@ const Movie = ({movies, totalPages, setPage, page, loading}) => {
                 <div className='flex flex-col items-center'>
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
                         {/* Movie's Card */}
+                        {/* <Loading /> */}
                         {movies?.map((movie) => (
                             <div key={movie.id} className="relative rounded-lg">
-                                <img className="rounded-lg h-full" src={movie?.poster_path ? `https://image.tmdb.org/t/p/w342${movie?.poster_path}` : 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'} alt="Movie's Poster" />
+                                <img className={`rounded-lg h-full ${load ? '' : 'hidden'}`} src={movie?.poster_path ? `https://image.tmdb.org/t/p/w342${movie?.poster_path}` : 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'} alt="Movie's Poster" onLoad={() => setLoad(true)}/>
                                 <div className="absolute backdrop-blur-sm bg-blue-800 bg-opacity-50 p-2 opacity-0 hover:opacity-100 transition ease-in-out duration-150 h-full w-full bottom-0 rounded-lg">
                                     <div className="text-sm md:text-base font-bold line-clamp-2 pb-2">{movie?.title}</div>
                                     <div className='flex items-center text-xs md:text-sm pb-2 mb-2 border-b'><AiFillStar/>   {movie.vote_average}</div>
